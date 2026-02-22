@@ -1,0 +1,33 @@
+name: cobalt-stack
+services:
+  - name: cobalt-api
+    image: ghcr.io/imputnet/cobalt:11
+    ports:
+      - port: 9000
+        protocol: http
+    routes:
+      - path: /
+        port: 9000
+    regions:
+      - fra
+    env:
+      - key: API_URL
+        value: "https://replace-this-with-your-api-url.koyeb.app"
+    instance_types:
+      - micro
+
+  - name: cobalt-web
+    image: ghcr.io/imputnet/cobalt-web:latest
+    ports:
+      - port: 80
+        protocol: http
+    routes:
+      - path: /
+        port: 80
+    regions:
+      - fra
+    env:
+      - key: API_URL
+        value: "https://replace-this-with-your-api-url.koyeb.app"
+    instance_types:
+      - micro
