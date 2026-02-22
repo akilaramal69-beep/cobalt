@@ -1,7 +1,9 @@
 name: cobalt-stack
 services:
   - name: cobalt-api
-    image: ghcr.io/imputnet/cobalt:11
+    type: docker
+    docker:
+      image: ghcr.io/imputnet/cobalt:11
     ports:
       - port: 9000
         protocol: http
@@ -17,7 +19,9 @@ services:
       - micro
 
   - name: cobalt-web
-    image: ghcr.io/imputnet/cobalt-web:latest
+    type: docker
+    docker:
+      image: ghcr.io/imputnet/cobalt-web:latest
     ports:
       - port: 80
         protocol: http
